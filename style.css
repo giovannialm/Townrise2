@@ -1,0 +1,877 @@
+/* =========================================================
+   VARIÁVEIS
+   ========================================================= */
+
+:root {
+    --ink: #111a18;
+    --cream: #f1eee5;
+    --muted: #aeb5ae;
+    --accent: #D7BC97;
+    --line: rgba(255, 255, 255, 0.16);
+    --dark: #0b1110;
+}
+
+
+/* =========================================================
+   RESET / CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--dark);
+    color: #f5f3ed;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    height: 82px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5vw;
+
+    background: linear-gradient(
+        180deg,
+        rgba(5, 9, 9, 0.82),
+        transparent
+    );
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* Logo */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-family: "Playfair Display", serif;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 23px;
+}
+
+.brand-mark {
+    font-size: 27px;
+    line-height: 1;
+}
+
+.brand img {
+    width: 170px;
+    height: auto;
+    display: block;
+}
+
+
+/* Menu */
+
+nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: #c9ccc7;
+
+    position: relative;
+    padding: 30px 0;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 22px;
+
+    height: 2px;
+
+    background: var(--accent);
+
+    transform: scaleX(0);
+    transition: 0.25s;
+}
+
+nav a.active,
+nav a:hover {
+    color: #fff;
+}
+
+nav a.active::after,
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* Botões da Navbar */
+
+.nav-button,
+.primary-button {
+    border: 1px solid #dfdfdfa6;
+
+    padding: 13px 18px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    letter-spacing: 1.1px;
+
+    transition: 0.25s;
+}
+
+.nav-button:hover,
+.primary-button:hover {
+    background: #fff;
+    color: #101614;
+}
+
+
+/* =========================================================
+   HERO / PRIMEIRA TELA
+   ========================================================= */
+
+.hero {
+    height: 100vh;
+    min-height: 680px;
+
+    position: relative;
+
+    background: url("assets/fundo.gif") center / cover no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* Overlay */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 10, 10, 0.48),
+            rgba(5, 8, 8, 0.15),
+            rgba(4, 8, 8, 0.28)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(4, 8, 8, 0.25),
+            transparent 45%,
+            rgba(4, 8, 8, 0.55)
+        );
+}
+
+
+/* Conteúdo */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 50%;
+    max-width: 700px;
+
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyebrow,
+.section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #d0d3ce;
+}
+
+.eyebrow {
+    margin-bottom: 18px;
+}
+
+
+/* Título */
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(64px, 9vw, 138px);
+
+    line-height: 0.85;
+
+    letter-spacing: -5px;
+
+    text-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Slogan */
+
+.tagline {
+    font-family: "Playfair Display", serif;
+
+    font-style: italic;
+
+    font-size: clamp(24px, 3vw, 42px);
+
+    line-height: 1.05;
+
+    margin: 26px 0 17px;
+}
+
+
+/* Texto */
+
+.intro {
+    max-width: 520px;
+
+    margin: auto;
+
+    color: #e0e1dc;
+
+    line-height: 1.6;
+}
+
+
+/* Botão principal */
+
+.primary-button {
+    display: inline-flex;
+
+    gap: 20px;
+
+    margin-top: 28px;
+
+    background: #2d221e;
+
+    border-color: var(--accent);
+}
+
+
+/* Logo central do Hero */
+
+.hero-logo {
+    width: 500px;
+    max-width: 85%;
+    height: auto;
+    color: #ffffff;
+    margin-bottom: 25px;
+}
+
+
+/* Scroll */
+
+.scroll {
+    position: absolute;
+
+    bottom: 26px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 19px;
+}
+
+.scroll span {
+    display: block;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #d0d3ce;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   CONFIGURAÇÃO GERAL DAS SEÇÕES
+   ========================================================= */
+
+.section {
+    padding: 120px 8vw;
+}
+
+
+/* Títulos */
+
+h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(48px, 6vw, 88px);
+
+    line-height: 0.92;
+
+    letter-spacing: -2px;
+}
+
+em {
+    font-weight: 400;
+    color: #B37662;
+}
+
+
+/* =========================================================
+   HISTÓRIA
+   ========================================================= */
+
+.story {
+    background: var(--cream);
+    color: var(--ink);
+}
+
+.story .section-label,
+.gameplay .section-label,
+.world .section-label {
+    color: #69736d;
+}
+
+.two-col {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9vw;
+
+    margin-top: 55px;
+
+    align-items: start;
+}
+
+
+/* Texto da história */
+
+.copy {
+    max-width: 560px;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #53605a;
+}
+
+.copy p + p {
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   MUNDO
+   ========================================================= */
+
+.world {
+    background: #2d221e;
+}
+
+
+/* Cabeçalho */
+
+.section-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 40px;
+
+    margin: 35px 0 55px;
+}
+
+.section-heading p {
+    max-width: 390px;
+
+    color: #aab3ac;
+
+    line-height: 1.7;
+}
+
+
+/* Cards */
+
+.world-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+.world-card {
+    height: 430px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    display: flex;
+
+    align-items: end;
+}
+
+
+/* Tipos de cards */
+
+.card-farm {
+    
+    background: url("assets/caixas2.jpg") center / cover no-repeat;
+
+}
+
+.card-river {
+
+      background: url("assets/caixas1.jpg") center / cover no-repeat;
+
+}
+
+.card-homes {
+      background: url("assets/caixas3.jpg") center / cover no-repeat;
+}
+
+
+/* Overlay dos cards */
+
+.world-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8),
+        transparent 60%
+    );
+}
+
+
+/* Conteúdo dos cards */
+
+.world-card > div {
+    position: relative;
+
+    padding: 30px;
+}
+
+.world-card span,
+.mechanic span,
+.mission-list span {
+    font-size: 11px;
+
+    color: var(--accent);
+
+    letter-spacing: 2px;
+}
+
+.world-card h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 30px;
+
+    margin: 8px 0;
+}
+
+.world-card p {
+    color: #ccd1cb;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   GAMEPLAY / MECÂNICAS
+   ========================================================= */
+
+.gameplay {
+    background: #e9e5da;
+
+    color: var(--ink);
+}
+
+.gameplay .section-heading p {
+    color: #5b665f;
+}
+
+
+/* Grid das mecânicas */
+
+.mechanics {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid #b9b7ae;
+}
+
+
+/* Card de mecânica */
+
+.mechanic {
+    padding: 28px 25px 32px 0;
+
+    border-bottom: 1px solid #b9b7ae;
+
+    min-height: 175px;
+}
+
+.mechanic strong {
+    display: block;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 28px;
+
+    margin: 15px 0 7px;
+}
+
+.mechanic p {
+    color: #657068;
+
+    line-height: 1.5;
+
+    max-width: 280px;
+}
+
+
+/* =========================================================
+   PERSONAGEM
+   ========================================================= */
+
+.character {
+    min-height: 700px;
+
+    background: #2d221e;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr 0.85fr;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Imagem */
+
+.character-image {
+    min-height: 700px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 55%,
+            #2d221e 100%
+        ),
+        url("assets/personagem.jpg") center / cover;
+
+    filter: saturate(0.8);
+}
+
+
+/* Conteúdo */
+
+.character-content {
+    align-self: center;
+
+    padding: 8vw;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.character-content h2 {
+    margin: 25px 0;
+}
+
+.character-content p {
+    max-width: 430px;
+
+    color: #bbc3bc;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+
+/* Linha */
+
+.character-line {
+    height: 1px;
+
+    background: var(--line);
+
+    margin: 35px 0 15px;
+
+    max-width: 430px;
+}
+
+.role {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   DESASTRES NATURAIS
+   ========================================================= */
+
+.disasters {
+    min-height: 720px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 13, 13, 0.95),
+            rgba(7, 13, 13, 0.55)
+        ),
+        url("assets/mapa-destruído.jpg") center / cover;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.disaster-content {
+    max-width: 650px;
+
+    margin: 45px 0 0 10vw;
+}
+
+.disaster-content p {
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #c0c6c0;
+
+    margin: 28px 0 40px;
+}
+
+
+/* Lista de missões */
+
+.mission-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    color: #e6e5df;
+}
+
+.mission-list div {
+    border-top: 1px solid var(--line);
+
+    padding: 17px 0;
+}
+
+.mission-list span {
+    margin-right: 15px;
+}
+
+
+/* =========================================================
+   MENSAGEM FINAL
+   ========================================================= */
+
+.final-message {
+    text-align: center;
+
+    padding: 140px 8vw;
+
+    background: var(--cream);
+
+    color: var(--ink);
+}
+
+.final-message .section-label {
+    color: #6a736d;
+}
+
+.final-message h2 {
+    margin: 35px auto 25px;
+}
+
+.final-message p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #5b665f;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 35px 8vw;
+
+    background: #080d0c;
+
+    color: #89928c;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+footer .brand {
+    color: #f5f3ed;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .navbar {
+        padding: 0 6vw;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .two-col,
+    .character {
+        grid-template-columns: 1fr;
+    }
+
+    .world-grid,
+    .mechanics {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .character-image {
+        min-height: 500px;
+    }
+
+    .character-content {
+        padding: 70px 8vw;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading p {
+        margin-top: 25px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .world-grid,
+    .mechanics,
+    .mission-list {
+        grid-template-columns: 1fr;
+    }
+
+    .world-card {
+        height: 330px;
+    }
+
+    .section {
+        padding: 85px 7vw;
+    }
+
+    .character-image {
+        min-height: 400px;
+    }
+
+    footer {
+        gap: 20px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
